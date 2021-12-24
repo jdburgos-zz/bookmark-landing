@@ -12,11 +12,6 @@ export default function Home() {
 
         <main>
             <h1>Home</h1>
-            <ul>
-                <li>
-                    <Link href="/features">Features</Link>
-                </li>
-            </ul>
         </main>
     </div>
   )
