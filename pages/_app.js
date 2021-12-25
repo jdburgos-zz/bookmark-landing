@@ -1,12 +1,25 @@
-import '../styles/globals.scss'
+/** Next core **/
+import Head from 'next/head';
+
+/** Components **/
 import { MainContainer } from '../components/layout/MainContainer';
 
-function MyApp({ Component, pageProps }) {
+/** Styles **/
+import '../styles/globals.scss'
+
+export default function MyApp({ Component, pageProps }) {
+  const { title } = pageProps;
+
   return (
-    <MainContainer>
-      <Component {...pageProps} />
-    </MainContainer>
+    <div>
+      <Head>
+        <title>Bookmark - Landing - { title }</title>
+        <meta name="description" content="Bookmark Landing Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <MainContainer>
+        <Component {...pageProps} />
+      </MainContainer>
+    </div>
   );
 }
-
-export default MyApp
