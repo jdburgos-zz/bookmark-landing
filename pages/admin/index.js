@@ -1,9 +1,9 @@
-const title = 'Signup';
+const title = 'Admin';
 
-export default function Signup() {
+export default function Admin() {
   return (
     <div>
-      <h1>Signup</h1>
+      <h1>Admin</h1>
     </div>
   )
 }

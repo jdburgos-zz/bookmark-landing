@@ -1,5 +1,8 @@
-import { useRouter } from "next/router";
+/** React core **/
 import {useEffect} from "react";
+
+/** Next core **/
+import { useRouter } from "next/router";
 
 export default function Auth() {
     const router = useRouter();

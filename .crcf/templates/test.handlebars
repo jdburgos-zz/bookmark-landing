@@ -1,0 +1,20 @@
+/** React core **/
+import ReactDOM from 'react-dom';
+import {{#if typescript }}* as {{/if}}React from 'react';
+
+/** Components **/
+import {{#if export~}} { {{ name }} } {{else~}} {{name}} {{~/if}} from './
+
+{{~#if uppercase~}}
+  {{~name}}
+  {{~else~}}
+  {{~nameLowerCase}}
+{{~/if}}';
+
+describe('{{ name }}', () => {
+test('should renders without crashing', () => {
+const div = document.createElement('div');
+
+ReactDOM.render(<{{ name }} />, div);
+});
+});

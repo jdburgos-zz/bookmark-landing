@@ -1,0 +1,35 @@
+{{#if typescript}}
+  /** React core **/
+  import * as React from 'react';
+{{else}}
+  /** React core **/
+  import React from 'react';
+{{/if}}
+{{#if proptypes}}
+  import PropTypes from 'prop-types';
+{{/if}}
+{{#if typescript}}
+
+  {{#if export}}export {{/if}}type {{ name }}Props = {
+  //
+  };
+{{/if}}
+
+/** Styles **/
+import styles from './{{ name }}.module.scss';
+
+{{#if export }}export {{/if}}const {{ name }}{{#if typescript}}: React.FC<
+{{~#if proptypes~}} {{ name ~}} Props {{~else~}} any {{~/if}}> {{~/if}} = () =>
+<div className={styles}>{{name}}</div>;
+
+{{#if proptypes~}}
+  {{ name }}.propTypes = {
+  //
+  };
+  {{#unless export}}
+
+  {{/unless}}
+{{/if}}
+{{#unless export }}
+  export default {{ name }};
+{{/unless}}
