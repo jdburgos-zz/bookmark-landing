@@ -3,12 +3,20 @@ import { useState } from 'react';
 
 /** Next core **/
 import Link from "next/link";
+import Image from 'next/image';
 
 /** Styles **/
 import styles from './MainMenu.module.scss';
 
+/** Assets **/
+import HamburgerIcon from '../../public/images/icon-hamburger.svg';
+import CloseIcon from '../../public/images/icon-close.svg';
+import Logo from '../../public/images/logo-bookmark.svg';
+import TwitterIcon from '../../public/images/icon-twitter.svg';
+import FacebookIcon from '../../public/images/icon-facebook.svg';
+
 export const MainMenu = () => {
-  const [isMenuActive, toggleMenu] = useState(true);
+  const [isMenuActive, toggleMenu] = useState(false);
 
   const handleMenu = () => {
     toggleMenu(prevState => !prevState);
@@ -26,13 +34,13 @@ export const MainMenu = () => {
 
   const content = false ? logout : (
     <li>
-      <Link href="/auth/login" className={styles['main-menu__item']} onClick={handleMenu}>Login</Link>
+      <Link href="/auth/login" className={styles['main-menu__item']}><a onClick={handleMenu}>Login</a></Link>
     </li>
   );
   const admin = (
     <li>
-      <Link href="/dashboard" className={styles['main-menu__item']} onClick={handleMenu}>
-        Dashboard
+      <Link href="/admin" className={styles['main-menu__item']}>
+        <a onClick={handleMenu}>Dashboard</a>
       </Link>
     </li>
   );
@@ -45,7 +53,7 @@ export const MainMenu = () => {
 
   const menuItems = MENU_ITEMS.map(({ url, name }, index) => (
       <li key={index}>
-        <Link href={url} className={styles['main-menu__item']} onClick={handleMenu}>{ name }</Link>
+        <Link href={url} className={styles['main-menu__item']}><a onClick={handleMenu}>{ name }</a></Link>
       </li>
     )
   );
@@ -57,13 +65,28 @@ export const MainMenu = () => {
         {false && admin}
         {content}
       </ul>
+      <ul>
+        <li>
+          <a href="https://www.facebook.com" target="_blank" rel="noreferrer"><Image src={FacebookIcon} alt='Facebook' /></a>
+        </li>
+        <li>
+          <a href="https://www.twitter.com" target="_blank" rel="noreferrer"><Image src={TwitterIcon} alt='Twitter' /></a>
+        </li>
+      </ul>
     </div>
   );
 
+  const menuIcon = isMenuActive ? CloseIcon : HamburgerIcon ;
+  const logoImg = <Image src={Logo} />
+
   return (
     <div className={styles['main-menu']}>
+      {isMenuActive && logoImg}
       <div className={styles['main-menu__btn']} onClick={handleMenu}>
-        <i className="fas fa-bars"></i>
+        <Image
+          src={menuIcon}
+          alt="Menu"
+          priority />
       </div>
       {isMenuActive && menu}
     </div>

@@ -1,0 +1,14 @@
+:root {
+  --f-primary: 'Rubik';
+  --f-size: 18px;
+  --c-soft-blue: hsl(231, 69%, 60%);
+  --c-soft-red: hsl(0, 94%, 66%);
+  --c-grayish-blue: hsl(229, 8%, 60%);
+  --c-very-dark-blue: hsl(229, 31%, 21%);
+  --c-white: #fff;
+}
+
+// Breakpoints
+$b-small: 576px;
+$b-medium: 768px;
+$b-x-large: 1200px;
