@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 /** Next core **/
-import Link from "next/link";
+import Link from 'next/link';
 import Image from 'next/image';
 
 /** Styles **/
@@ -17,6 +17,7 @@ import FacebookIcon from '../../public/images/icon-facebook.svg';
 
 export const MainMenu = () => {
   const [isMenuActive, toggleMenu] = useState(false);
+  const [isLogged] = useState(false);
 
   const handleMenu = () => {
     toggleMenu(prevState => !prevState);
@@ -32,9 +33,13 @@ export const MainMenu = () => {
     </div>
   );
 
-  const content = false ? logout : (
+  const content = isLogged ? (
+    logout
+  ) : (
     <li>
-      <Link href="/auth/login" className={styles['main-menu__item']}><a onClick={handleMenu}>Login</a></Link>
+      <Link href="/auth/login" className={styles['main-menu__item']}>
+        <a onClick={handleMenu}>Login</a>
+      </Link>
     </li>
   );
   const admin = (
@@ -49,44 +54,46 @@ export const MainMenu = () => {
     { url: '/features', name: 'Features' },
     { url: '/pricing', name: 'Pricing' },
     { url: '/contact', name: 'Contact' },
-  ]
+  ];
 
   const menuItems = MENU_ITEMS.map(({ url, name }, index) => (
-      <li key={index}>
-        <Link href={url} className={styles['main-menu__item']}><a onClick={handleMenu}>{ name }</a></Link>
-      </li>
-    )
-  );
+    <li key={index}>
+      <Link href={url} className={styles['main-menu__item']}>
+        <a onClick={handleMenu}>{name}</a>
+      </Link>
+    </li>
+  ));
 
   const menu = (
     <div className={styles['main-menu__container']}>
       <ul>
         {menuItems}
-        {false && admin}
+        {isLogged && admin}
         {content}
       </ul>
       <ul>
         <li>
-          <a href="https://www.facebook.com" target="_blank" rel="noreferrer"><Image src={FacebookIcon} alt='Facebook' /></a>
+          <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+            <Image src={FacebookIcon} alt="Facebook" />
+          </a>
         </li>
         <li>
-          <a href="https://www.twitter.com" target="_blank" rel="noreferrer"><Image src={TwitterIcon} alt='Twitter' /></a>
+          <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
+            <Image src={TwitterIcon} alt="Twitter" />
+          </a>
         </li>
       </ul>
     </div>
   );
 
-  const menuIcon = isMenuActive ? CloseIcon : HamburgerIcon ;
-  const logoImg = <Image src={Logo} />
+  const menuIcon = isMenuActive ? CloseIcon : HamburgerIcon;
+  const logoImg = <Image src={Logo} alt="Logo" />;
 
   return (
     <div className={styles['main-menu']}>
       {isMenuActive && logoImg}
       <div className={styles['main-menu__btn']} onClick={handleMenu}>
-        <Image
-          src={menuIcon}
-          alt="Menu"
-          priority />
+        <Image src={menuIcon} alt="Menu" priority />
       </div>
       {isMenuActive && menu}
     </div>

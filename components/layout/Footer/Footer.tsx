@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 /** Styles **/
-import styles from "./Footer.module.scss";
+import styles from './Footer.module.scss';
 
 /** Styles **/
 import Logo from '../../../public/images/logo-bookmark.svg';
@@ -15,29 +15,32 @@ export const Footer = () => {
     { url: '/features', name: 'Features' },
     { url: '/pricing', name: 'Pricing' },
     { url: '/contact', name: 'Contact' },
-  ]
+  ];
 
   const menuItems = MENU_ITEMS.map(({ url, name }, index) => (
-      <li key={index}>
-        <Link href={url} className={styles['main-menu__item']}>{ name }</Link>
-      </li>
-    )
-  );
+    <li key={index}>
+      <Link href={url} className={styles['main-menu__item']}>
+        {name}
+      </Link>
+    </li>
+  ));
 
   return (
     <footer className={styles.footer}>
       <Image src={Logo} alt="Bookmark" priority />
-      <ul>
-        { menuItems }
-      </ul>
+      <ul>{menuItems}</ul>
       <ul>
         <li>
-          <a href="https://www.facebook.com" target="_blank" rel="noreferrer"><Image src={FacebookIcon} alt='Facebook' /></a>
+          <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+            <Image src={FacebookIcon} alt="Facebook" />
+          </a>
         </li>
         <li>
-          <a href="https://www.twitter.com" target="_blank" rel="noreferrer"><Image src={TwitterIcon} alt='Twitter' /></a>
+          <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
+            <Image src={TwitterIcon} alt="Twitter" />
+          </a>
         </li>
       </ul>
     </footer>
   );
-}
+};

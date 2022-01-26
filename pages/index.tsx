@@ -1,28 +1,30 @@
 /** Next core **/
 import Image from 'next/image';
+import type { NextPage } from 'next';
+import { GetStaticProps } from 'next';
 
 /** Components **/
-import { Button, Card, Input } from '../components/ui';
+import { Button, Card, Input } from '@components/ui';
 
 /** Assets **/
-import HeroImg from "../public/images/illustration-hero.svg";
-import ImgTab1 from "../public/images/illustration-features-tab-1.svg";
-import ImgTab2 from "../public/images/illustration-features-tab-2.svg";
-import ImgTab3 from "../public/images/illustration-features-tab-3.svg";
-import ChromeLogo from "../public/images/logo-chrome.svg";
-import FirefoxLogo from "../public/images/logo-firefox.svg";
-import OperaLogo from "../public/images/logo-opera.svg";
-import Arrow from "../public/images/icon-arrow.svg";
+import HeroImg from '../public/images/illustration-hero.svg';
+import ImgTab1 from '../public/images/illustration-features-tab-1.svg';
+import ImgTab2 from '../public/images/illustration-features-tab-2.svg';
+import ImgTab3 from '../public/images/illustration-features-tab-3.svg';
+import ChromeLogo from '../public/images/logo-chrome.svg';
+import FirefoxLogo from '../public/images/logo-firefox.svg';
+import OperaLogo from '../public/images/logo-opera.svg';
+import Arrow from '../public/images/icon-arrow.svg';
 
-export default function Home() {
+const Home: NextPage = () => {
   return (
     <>
       <div>
         <Image src={HeroImg} alt="Hero" />
         <h1>A Simple Bookmark Manager</h1>
         <p>
-          A clean and simple interface to organize your favourite websites. Open a new
-          browser tab and see your sites load instantly. Try it for free.
+          A clean and simple interface to organize your favourite websites. Open a new browser tab
+          and see your sites load instantly. Try it for free.
         </p>
         <div>
           <Button>Get it on Chrome</Button>
@@ -32,8 +34,8 @@ export default function Home() {
       <div>
         <h2>Features</h2>
         <p>
-          Our aim is to make it quick and easy for you to access your favourite websites.
-          Your bookmarks sync between your devices so you can access them on the go.
+          Our aim is to make it quick and easy for you to access your favourite websites. Your
+          bookmarks sync between your devices so you can access them on the go.
         </p>
         <div>
           <div>
@@ -46,8 +48,8 @@ export default function Home() {
               <Image src={ImgTab1} alt="Bookmark in one click" />
               <h3>Bookmark in one click</h3>
               <p>
-                Organize your bookmarks however you like. Our simple drag-and-drop interface
-                gives you complete control over how you manage your favourite sites.
+                Organize your bookmarks however you like. Our simple drag-and-drop interface gives
+                you complete control over how you manage your favourite sites.
               </p>
               <Button>More Info</Button>
             </div>
@@ -55,8 +57,8 @@ export default function Home() {
               <Image src={ImgTab2} alt="Intelligent search" />
               <h3>Intelligent search</h3>
               <p>
-                Our powerful search feature will help you find saved sites in no time at all.
-                No need to trawl through all of your bookmarks.
+                Our powerful search feature will help you find saved sites in no time at all. No
+                need to trawl through all of your bookmarks.
               </p>
               <Button>More Info</Button>
             </div>
@@ -64,8 +66,8 @@ export default function Home() {
               <Image src={ImgTab3} alt="Share your bookmarks" />
               <h3>Share your bookmarks</h3>
               <p>
-                Easily share your bookmarks and collections with others. Create a shareable
-                link that you can send at the click of a button.
+                Easily share your bookmarks and collections with others. Create a shareable link
+                that you can send at the click of a button.
               </p>
               <Button>More Info</Button>
             </div>
@@ -75,8 +77,8 @@ export default function Home() {
       <div>
         <h2>Download the extension</h2>
         <p>
-          We’ve got more browsers in the pipeline. Please do let us know if you’ve
-          got a favourite you’d like us to prioritize.
+          We’ve got more browsers in the pipeline. Please do let us know if you’ve got a favourite
+          you’d like us to prioritize.
         </p>
         <div>
           <Card>
@@ -102,52 +104,51 @@ export default function Home() {
       <div>
         <h2>Frequently Asked Questions</h2>
         <p>
-          Here are some of our FAQs. If you have any other questions you’d like
-          answered please feel free to email us.
+          Here are some of our FAQs. If you have any other questions you’d like answered please feel
+          free to email us.
         </p>
         <div>
           <div>
             <div>
               <h3>What is Bookmark?</h3>
-              <Image src={Arrow} alt='arrow' />
+              <Image src={Arrow} alt="arrow" />
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt
-              justo eget ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt justo eget
+              ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.
             </p>
           </div>
           <div>
             <div>
               <h3>How can I request a new browser?</h3>
-              <Image src={Arrow} alt='arrow' />
+              <Image src={Arrow} alt="arrow" />
             </div>
             <p>
-              Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula.
-              Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa,
-              ultricies non ligula. Suspendisse imperdie tVivamus luctus eros aliquet convallis ultricies.
-              Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.
-
+              Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non
+              ligula. Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris
+              augue massa, ultricies non ligula. Suspendisse imperdie tVivamus luctus eros aliquet
+              convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.
             </p>
           </div>
           <div>
             <div>
               <h3>Is there a mobile app?</h3>
-              <Image src={Arrow} alt='arrow' />
+              <Image src={Arrow} alt="arrow" />
             </div>
             <p>
-              Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut condimentum
-              urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet pharetra purus. Sed
-              sollicitudin ex et ultricies bibendum.
+              Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut
+              condimentum urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet
+              pharetra purus. Sed sollicitudin ex et ultricies bibendum.
             </p>
           </div>
           <div>
             <div>
               <h3>What about other Chromium browsers?</h3>
-              <Image src={Arrow} alt='arrow' />
+              <Image src={Arrow} alt="arrow" />
             </div>
             <p>
-              Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod dui. Aliquam
-              vitae neque eget nisl gravida pellentesque non ut velit.
+              Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod
+              dui. Aliquam vitae neque eget nisl gravida pellentesque non ut velit.
             </p>
           </div>
         </div>
@@ -162,13 +163,15 @@ export default function Home() {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export async function getStaticProps(ctx) {
+export default Home;
+
+export const getStaticProps: GetStaticProps = async context => {
   const title = 'Home';
 
   return {
-    props: { title }
+    props: { title },
   };
-}
+};
