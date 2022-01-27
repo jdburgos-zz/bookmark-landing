@@ -19,9 +19,7 @@ export const Footer = () => {
 
   const menuItems = MENU_ITEMS.map(({ url, name }, index) => (
     <li key={index}>
-      <Link href={url} className={styles['main-menu__item']}>
-        {name}
-      </Link>
+      <Link href={url}>{name}</Link>
     </li>
   ));
 

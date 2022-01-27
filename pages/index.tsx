@@ -1,3 +1,6 @@
+/** React core **/
+import { useRef } from 'react';
+
 /** Next core **/
 import Image from 'next/image';
 import type { NextPage } from 'next';
@@ -17,6 +20,8 @@ import OperaLogo from '../public/images/logo-opera.svg';
 import Arrow from '../public/images/icon-arrow.svg';
 
 const Home: NextPage = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
     <>
       <div>
@@ -27,8 +32,8 @@ const Home: NextPage = () => {
           and see your sites load instantly. Try it for free.
         </p>
         <div>
-          <Button>Get it on Chrome</Button>
-          <Button>Get it on Firefox</Button>
+          <Button onClick={() => {}}>Get it on Chrome</Button>
+          <Button onClick={() => {}}>Get it on Firefox</Button>
         </div>
       </div>
       <div>
@@ -51,7 +56,7 @@ const Home: NextPage = () => {
                 Organize your bookmarks however you like. Our simple drag-and-drop interface gives
                 you complete control over how you manage your favourite sites.
               </p>
-              <Button>More Info</Button>
+              <Button onClick={() => {}}>More Info</Button>
             </div>
             <div>
               <Image src={ImgTab2} alt="Intelligent search" />
@@ -60,7 +65,7 @@ const Home: NextPage = () => {
                 Our powerful search feature will help you find saved sites in no time at all. No
                 need to trawl through all of your bookmarks.
               </p>
-              <Button>More Info</Button>
+              <Button onClick={() => {}}>More Info</Button>
             </div>
             <div>
               <Image src={ImgTab3} alt="Share your bookmarks" />
@@ -69,7 +74,7 @@ const Home: NextPage = () => {
                 Easily share your bookmarks and collections with others. Create a shareable link
                 that you can send at the click of a button.
               </p>
-              <Button>More Info</Button>
+              <Button onClick={() => {}}>More Info</Button>
             </div>
           </div>
         </div>
@@ -85,19 +90,19 @@ const Home: NextPage = () => {
             <Image src={ChromeLogo} alt="Chrome" />
             <h3>Add to Chrome</h3>
             <span>Minimum version 62</span>
-            <Button>Add & Install Extension</Button>
+            <Button onClick={() => {}}>Add & Install Extension</Button>
           </Card>
           <Card>
             <Image src={FirefoxLogo} alt="Firefox" />
             <h3>Add to Firefox</h3>
             <span>Minimum version 55</span>
-            <Button>Add & Install Extension</Button>
+            <Button onClick={() => {}}>Add & Install Extension</Button>
           </Card>
           <Card>
             <Image src={OperaLogo} alt="Opera" />
             <h3>Add to Opera</h3>
             <span>Minimum version 46</span>
-            <Button>Add & Install Extension</Button>
+            <Button onClick={() => {}}>Add & Install Extension</Button>
           </Card>
         </div>
       </div>
@@ -152,14 +157,21 @@ const Home: NextPage = () => {
             </p>
           </div>
         </div>
-        <Button>More Info</Button>
+        <Button onClick={() => {}}>More Info</Button>
       </div>
       <div>
         <h3>35,000+ already joined</h3>
         <h4>Stay up-to-date with what we’re doing</h4>
         <div>
-          <Input />
-          <Button>Contact Us</Button>
+          <Input
+            input={{
+              ref: inputRef,
+              placeholder: 'Shorten a link here...',
+              type: 'url',
+            }}
+            onChange={() => {}}
+          />
+          <Button onClick={() => {}}>Contact Us</Button>
         </div>
       </div>
     </>

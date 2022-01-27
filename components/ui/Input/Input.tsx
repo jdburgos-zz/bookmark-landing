@@ -5,8 +5,12 @@ import React from 'react';
 import styles from './Input.module.scss';
 
 type InputProps = {
-  className: string;
-  input: any;
+  className?: string;
+  input: {
+    ref: React.RefObject<HTMLInputElement>;
+    placeholder: string;
+    type: string;
+  };
   onChange: () => void;
 };
 

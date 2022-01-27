@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './Card.module.scss';
 
 type CardProps = {
-  className: string;
+  className?: string;
   children: React.ReactNode;
 };
 

@@ -37,14 +37,14 @@ export const MainMenu = () => {
     logout
   ) : (
     <li>
-      <Link href="/auth/login" className={styles['main-menu__item']}>
+      <Link href="/auth/login">
         <a onClick={handleMenu}>Login</a>
       </Link>
     </li>
   );
   const admin = (
     <li>
-      <Link href="/admin" className={styles['main-menu__item']}>
+      <Link href="/admin">
         <a onClick={handleMenu}>Dashboard</a>
       </Link>
     </li>
@@ -58,7 +58,7 @@ export const MainMenu = () => {
 
   const menuItems = MENU_ITEMS.map(({ url, name }, index) => (
     <li key={index}>
-      <Link href={url} className={styles['main-menu__item']}>
+      <Link href={url}>
         <a onClick={handleMenu}>{name}</a>
       </Link>
     </li>
