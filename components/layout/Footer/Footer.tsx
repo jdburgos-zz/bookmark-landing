@@ -5,7 +5,7 @@ import Link from 'next/link';
 /** Styles **/
 import styles from './Footer.module.scss';
 
-/** Styles **/
+/** Assets **/
 import Logo from '../../../public/images/logo-bookmark.svg';
 import FacebookIcon from '../../../public/images/icon-facebook.svg';
 import TwitterIcon from '../../../public/images/icon-twitter.svg';
