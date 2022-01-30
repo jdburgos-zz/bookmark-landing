@@ -8,9 +8,10 @@ import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 
 /** Components **/
-import { Button, Card, Input } from '@components/ui';
+import { Button, Input } from '@components/ui';
 import { TabItem } from '@components/TabItem';
 import { Tab } from '@components/Tab';
+import { DownloadItem } from '@components/DownloadItem';
 
 /** Styles **/
 import styles from './Home.module.scss';
@@ -18,18 +19,19 @@ import styles from './Home.module.scss';
 /** Data **/
 import { TABS_CONTENT } from '../data/tabs-content';
 import { TABS_HEADER } from '../data/tabs-header';
+import { DOWNLOAD_ITEMS } from '../data/download-items';
 
 /** Assets **/
 import HeroImg from '../public/images/illustration-hero.svg';
-import ChromeLogo from '../public/images/logo-chrome.svg';
-import FirefoxLogo from '../public/images/logo-firefox.svg';
-import OperaLogo from '../public/images/logo-opera.svg';
 import Arrow from '../public/images/icon-arrow.svg';
 
 const Home: NextPage = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const tabs = TABS_HEADER.map(({ text }, index) => <Tab key={index} text={text} />);
   const tabItems = TABS_CONTENT.map((tab, index) => <TabItem key={index} tab={tab} />);
+  const downloadItems = DOWNLOAD_ITEMS.map((item, index) => (
+    <DownloadItem key={index} item={item} />
+  ));
 
   return (
     <>
@@ -49,9 +51,7 @@ const Home: NextPage = () => {
             </Link>
             <Link href="https://www.mozilla.org/firefox/new/">
               <a target="_blank">
-                <Button variant="secondary" onClick={() => {}}>
-                  Get it on Firefox
-                </Button>
+                <Button variant="secondary">Get it on Firefox</Button>
               </a>
             </Link>
           </div>
@@ -70,31 +70,14 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div>
-        <h2>Download the extension</h2>
-        <p>
-          We’ve got more browsers in the pipeline. Please do let us know if you’ve got a favourite
-          you’d like us to prioritize.
-        </p>
-        <div>
-          <Card>
-            <Image src={ChromeLogo} alt="Chrome" />
-            <h3>Add to Chrome</h3>
-            <span>Minimum version 62</span>
-            <Button>Add & Install Extension</Button>
-          </Card>
-          <Card>
-            <Image src={FirefoxLogo} alt="Firefox" />
-            <h3>Add to Firefox</h3>
-            <span>Minimum version 55</span>
-            <Button>Add & Install Extension</Button>
-          </Card>
-          <Card>
-            <Image src={OperaLogo} alt="Opera" />
-            <h3>Add to Opera</h3>
-            <span>Minimum version 46</span>
-            <Button>Add & Install Extension</Button>
-          </Card>
+      <div className={styles.home__downloads}>
+        <div className={styles.home__content}>
+          <h2 className={styles.home__title}>Download the extension</h2>
+          <p className={styles.home__description}>
+            We’ve got more browsers in the pipeline. Please do let us know if you’ve got a favourite
+            you’d like us to prioritize.
+          </p>
+          <div className={styles['home__downloads-content']}>{downloadItems}</div>
         </div>
       </div>
       <div>
