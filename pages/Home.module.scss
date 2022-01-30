@@ -1,6 +1,6 @@
 .home {
   &__introduction {
-    margin-bottom: 200px;
+    margin-bottom: 150px;
   }
 
   &__content {
@@ -22,5 +22,20 @@
   &__actions {
     display: flex;
     justify-content: space-evenly;
+  }
+
+  &__features {
+    margin-bottom: 200px;
+
+    &-tabs {
+      margin-top: 50px;
+
+      &__header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 90px;
+        text-align: center;
+      }
+    }
   }
 }

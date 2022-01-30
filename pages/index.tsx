@@ -1,5 +1,5 @@
 /** React core **/
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 /** Next core **/
 import Image from 'next/image';
@@ -9,15 +9,18 @@ import { GetStaticProps } from 'next';
 
 /** Components **/
 import { Button, Card, Input } from '@components/ui';
+import { TabItem } from '@components/TabItem';
+import { Tab } from '@components/Tab';
 
 /** Styles **/
 import styles from './Home.module.scss';
 
+/** Data **/
+import { TABS_CONTENT } from '../data/tabs-content';
+import { TABS_HEADER } from '../data/tabs-header';
+
 /** Assets **/
 import HeroImg from '../public/images/illustration-hero.svg';
-import ImgTab1 from '../public/images/illustration-features-tab-1.svg';
-import ImgTab2 from '../public/images/illustration-features-tab-2.svg';
-import ImgTab3 from '../public/images/illustration-features-tab-3.svg';
 import ChromeLogo from '../public/images/logo-chrome.svg';
 import FirefoxLogo from '../public/images/logo-firefox.svg';
 import OperaLogo from '../public/images/logo-opera.svg';
@@ -25,6 +28,8 @@ import Arrow from '../public/images/icon-arrow.svg';
 
 const Home: NextPage = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const tabs = TABS_HEADER.map(({ text }, index) => <Tab key={index} text={text} />);
+  const tabItems = TABS_CONTENT.map((tab, index) => <TabItem key={index} tab={tab} />);
 
   return (
     <>
@@ -52,46 +57,16 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div>
-        <h2>Features</h2>
-        <p>
-          Our aim is to make it quick and easy for you to access your favourite websites. Your
-          bookmarks sync between your devices so you can access them on the go.
-        </p>
-        <div>
-          <div>
-            <span>Simple Bookmarking</span>
-            <span>Speedy Searching</span>
-            <span>Easy Sharing</span>
-          </div>
-          <div>
-            <div>
-              <Image src={ImgTab1} alt="Bookmark in one click" />
-              <h3>Bookmark in one click</h3>
-              <p>
-                Organize your bookmarks however you like. Our simple drag-and-drop interface gives
-                you complete control over how you manage your favourite sites.
-              </p>
-              <Button>More Info</Button>
-            </div>
-            <div>
-              <Image src={ImgTab2} alt="Intelligent search" />
-              <h3>Intelligent search</h3>
-              <p>
-                Our powerful search feature will help you find saved sites in no time at all. No
-                need to trawl through all of your bookmarks.
-              </p>
-              <Button>More Info</Button>
-            </div>
-            <div>
-              <Image src={ImgTab3} alt="Share your bookmarks" />
-              <h3>Share your bookmarks</h3>
-              <p>
-                Easily share your bookmarks and collections with others. Create a shareable link
-                that you can send at the click of a button.
-              </p>
-              <Button>More Info</Button>
-            </div>
+      <div className={styles.home__features}>
+        <div className={styles.home__content}>
+          <h2 className={styles.home__title}>Features</h2>
+          <p className={styles.home__description}>
+            Our aim is to make it quick and easy for you to access your favourite websites. Your
+            bookmarks sync between your devices so you can access them on the go.
+          </p>
+          <div className={styles['home__features-tabs']}>
+            <div className={styles['home__features-tabs__header']}>{tabs}</div>
+            <div className={styles['home__features-tabs__content']}>{tabItems}</div>
           </div>
         </div>
       </div>
