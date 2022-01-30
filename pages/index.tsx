@@ -3,11 +3,15 @@ import { useRef } from 'react';
 
 /** Next core **/
 import Image from 'next/image';
+import Link from 'next/link';
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 
 /** Components **/
 import { Button, Card, Input } from '@components/ui';
+
+/** Styles **/
+import styles from './Home.module.scss';
 
 /** Assets **/
 import HeroImg from '../public/images/illustration-hero.svg';
@@ -24,16 +28,28 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div>
+      <div className={styles.home__introduction}>
         <Image src={HeroImg} alt="Hero" />
-        <h1>A Simple Bookmark Manager</h1>
-        <p>
-          A clean and simple interface to organize your favourite websites. Open a new browser tab
-          and see your sites load instantly. Try it for free.
-        </p>
-        <div>
-          <Button onClick={() => {}}>Get it on Chrome</Button>
-          <Button onClick={() => {}}>Get it on Firefox</Button>
+        <div className={styles.home__content}>
+          <h1 className={styles.home__title}>A Simple Bookmark Manager</h1>
+          <p className={styles.home__description}>
+            A clean and simple interface to organize your favourite websites. Open a new browser tab
+            and see your sites load instantly. Try it for free.
+          </p>
+          <div className={styles.home__actions}>
+            <Link href="https://www.google.com/intl/es/chrome/?brand=UUXU&gclsrc=ds&gclsrc=ds">
+              <a target="_blank">
+                <Button>Get it on Chrome</Button>
+              </a>
+            </Link>
+            <Link href="https://www.mozilla.org/firefox/new/">
+              <a target="_blank">
+                <Button variant="secondary" onClick={() => {}}>
+                  Get it on Firefox
+                </Button>
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
       <div>
@@ -56,7 +72,7 @@ const Home: NextPage = () => {
                 Organize your bookmarks however you like. Our simple drag-and-drop interface gives
                 you complete control over how you manage your favourite sites.
               </p>
-              <Button onClick={() => {}}>More Info</Button>
+              <Button>More Info</Button>
             </div>
             <div>
               <Image src={ImgTab2} alt="Intelligent search" />
@@ -65,7 +81,7 @@ const Home: NextPage = () => {
                 Our powerful search feature will help you find saved sites in no time at all. No
                 need to trawl through all of your bookmarks.
               </p>
-              <Button onClick={() => {}}>More Info</Button>
+              <Button>More Info</Button>
             </div>
             <div>
               <Image src={ImgTab3} alt="Share your bookmarks" />
@@ -74,7 +90,7 @@ const Home: NextPage = () => {
                 Easily share your bookmarks and collections with others. Create a shareable link
                 that you can send at the click of a button.
               </p>
-              <Button onClick={() => {}}>More Info</Button>
+              <Button>More Info</Button>
             </div>
           </div>
         </div>
@@ -90,19 +106,19 @@ const Home: NextPage = () => {
             <Image src={ChromeLogo} alt="Chrome" />
             <h3>Add to Chrome</h3>
             <span>Minimum version 62</span>
-            <Button onClick={() => {}}>Add & Install Extension</Button>
+            <Button>Add & Install Extension</Button>
           </Card>
           <Card>
             <Image src={FirefoxLogo} alt="Firefox" />
             <h3>Add to Firefox</h3>
             <span>Minimum version 55</span>
-            <Button onClick={() => {}}>Add & Install Extension</Button>
+            <Button>Add & Install Extension</Button>
           </Card>
           <Card>
             <Image src={OperaLogo} alt="Opera" />
             <h3>Add to Opera</h3>
             <span>Minimum version 46</span>
-            <Button onClick={() => {}}>Add & Install Extension</Button>
+            <Button>Add & Install Extension</Button>
           </Card>
         </div>
       </div>
@@ -157,7 +173,7 @@ const Home: NextPage = () => {
             </p>
           </div>
         </div>
-        <Button onClick={() => {}}>More Info</Button>
+        <Button>More Info</Button>
       </div>
       <div>
         <h3>35,000+ already joined</h3>
@@ -171,7 +187,7 @@ const Home: NextPage = () => {
             }}
             onChange={() => {}}
           />
-          <Button onClick={() => {}}>Contact Us</Button>
+          <Button>Contact Us</Button>
         </div>
       </div>
     </>

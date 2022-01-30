@@ -10,7 +10,7 @@ type ButtonProps = {
   variant?: string;
   disabled?: boolean;
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const Button: React.FC<ButtonProps> = ({
