@@ -40,10 +40,19 @@
   }
 
   &__downloads {
-    margin-bottom: 200px;
+    margin-bottom: 150px;
 
     &-content {
       margin-top: 60px;
+    }
+  }
+
+  &__faq {
+    margin-bottom: 150px;
+    text-align: center;
+
+    &-content {
+      margin: 60px 0;
     }
   }
 }
