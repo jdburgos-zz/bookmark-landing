@@ -26,11 +26,14 @@ export const FaqItem: React.FC<FaqItemProps> = ({ item }) => {
 
   const content = <p className={styles['faq-item__content']}>{item.description}</p>;
 
+  const activeClass = isActive ? styles['faq-item__arrow-active'] : '';
+  const classes = `${styles['faq-item__arrow']} ${activeClass}`.trim();
+
   return (
     <div className={styles['faq-item']}>
       <div className={styles['faq-item__header']} onClick={handleClick}>
         <h3 className={styles['faq-item__title']}>{item.title}</h3>
-        <Image src={Arrow} alt="arrow" />
+        <Image src={Arrow} alt="arrow" className={classes} />
       </div>
       {isActive && content}
     </div>
