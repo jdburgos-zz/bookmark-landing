@@ -7,29 +7,36 @@ import Link from 'next/link';
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 
+/** Dependencies **/
+import { Tabs } from 'antd';
+
 /** Components **/
 import { Button, Input } from '@components/ui';
 import { TabItem } from '@components/TabItem';
-import { Tab } from '@components/Tab';
 import { DownloadItem } from '@components/DownloadItem';
 import { FaqItem } from '@components/FaqItem';
 
 /** Styles **/
+import 'antd/es/tabs/style/index.css';
 import styles from './Home.module.scss';
 
 /** Data **/
 import { TABS_CONTENT } from '../data/tabs-content';
-import { TABS_HEADER } from '../data/tabs-header';
 import { DOWNLOAD_ITEMS } from '../data/download-items';
 import { FAQ_ITEMS } from '../data/faq-items';
 
 /** Assets **/
 import HeroImg from '../public/images/illustration-hero.svg';
 
+const { TabPane } = Tabs;
+
 const Home: NextPage = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const tabs = TABS_HEADER.map(({ text }, index) => <Tab key={index} text={text} />);
-  const tabItems = TABS_CONTENT.map((tab, index) => <TabItem key={index} tab={tab} />);
+  const tabItems = TABS_CONTENT.map((tab, index) => (
+    <TabPane tab={tab.title} key={index + 1}>
+      <TabItem tab={tab} />
+    </TabPane>
+  ));
   const downloadItems = DOWNLOAD_ITEMS.map((item, index) => (
     <DownloadItem key={index} item={item} />
   ));
@@ -67,8 +74,9 @@ const Home: NextPage = () => {
             bookmarks sync between your devices so you can access them on the go.
           </p>
           <div className={styles['home__features-tabs']}>
-            <div className={styles['home__features-tabs__header']}>{tabs}</div>
-            <div className={styles['home__features-tabs__content']}>{tabItems}</div>
+            <Tabs defaultActiveKey="1" centered animated>
+              {tabItems}
+            </Tabs>
           </div>
         </div>
       </div>

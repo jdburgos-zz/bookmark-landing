@@ -23,7 +23,7 @@ export const TabItem: React.FC<TabItemProps> = ({ tab }) => {
   return (
     <div className={tabClasses}>
       <Image src={tab.img} alt={tab.title} priority />
-      <h3 className={styles['tab-item__title']}>{tab.title}</h3>
+      <h3 className={styles['tab-item__title']}>{tab.subtitle}</h3>
       <p className={styles['tab-item__description']}>{tab.description}</p>
       <Button>More Info</Button>
     </div>
