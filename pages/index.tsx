@@ -1,5 +1,5 @@
 /** React core **/
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 /** Next core **/
 import Image from 'next/image';
@@ -20,6 +20,9 @@ import { TABS_CONTENT } from '../data/tabs-content';
 import { DOWNLOAD_ITEMS } from '../data/download-items';
 import { FAQ_ITEMS } from '../data/faq-items';
 
+/** Utils **/
+import { validateEmail } from '../utils/validate-email';
+
 /** Styles **/
 import styles from './Home.module.scss';
 
@@ -31,6 +34,8 @@ const { TabPane } = Tabs;
 const { Panel } = Collapse;
 
 const Home: NextPage = () => {
+  const [disableBtn, setDisableBtn] = useState(true);
+  const [inputError, setInputError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const tabItems = TABS_CONTENT.map((tab, index) => (
     <TabPane tab={tab.title} key={index + 1}>
@@ -45,6 +50,25 @@ const Home: NextPage = () => {
       {item.description}
     </Panel>
   ));
+
+  const emailHandler = () => {
+    const email = inputRef.current!.value;
+
+    if (email === '') {
+      setInputError(validateEmail(email));
+    } else {
+      setInputError(!validateEmail(email));
+      setDisableBtn(!validateEmail(email));
+    }
+  };
+
+  const contactHandler = () => {
+    console.log('contact');
+  };
+
+  const errorText = (
+    <p className={styles['home__pre-footer__hint-text']}>Whoops, make sure it&apos;s an email</p>
+  );
 
   return (
     <>
@@ -114,19 +138,28 @@ const Home: NextPage = () => {
           <Button>More Info</Button>
         </div>
       </div>
-      <div>
-        <h3>35,000+ already joined</h3>
-        <h4>Stay up-to-date with what we’re doing</h4>
-        <div>
-          <Input
-            input={{
-              ref: inputRef,
-              placeholder: 'Shorten a link here...',
-              type: 'url',
-            }}
-            onChange={() => {}}
-          />
-          <Button>Contact Us</Button>
+      <div className={styles['home__pre-footer']}>
+        <h3 className={styles['home__pre-footer__title']}>35,000+ already joined</h3>
+        <h4 className={styles['home__pre-footer__subtitle']}>
+          Stay up-to-date with what we’re doing
+        </h4>
+        <div className={styles['home__pre-footer__form']}>
+          <div className={styles['home__pre-footer__input-container']}>
+            <Input
+              className={styles['home__pre-footer__input']}
+              input={{
+                ref: inputRef,
+                placeholder: 'Email',
+                type: 'email',
+              }}
+              error={inputError}
+              onChange={emailHandler}
+            />
+            {inputError && errorText}
+          </div>
+          <Button variant="tertiary" onClick={contactHandler} disabled={disableBtn}>
+            Contact Us
+          </Button>
         </div>
       </div>
     </>

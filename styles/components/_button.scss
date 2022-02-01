@@ -16,4 +16,15 @@
     background-color: var(--c-very-dark-blue);
     color: var(--c-white);
   }
+
+  &:disabled {
+    background-color: #efefef;
+    color: var(--c-very-dark-blue);
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #efefef;
+      color: var(--c-very-dark-blue);
+    }
+  }
 }

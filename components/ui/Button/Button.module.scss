@@ -1,8 +1,9 @@
-.semi-rectangle {
-  border-radius: 7px;
-}
-
 .secondary {
   background-color: #efefef;
   color: var(--c-very-dark-blue);
+}
+
+.tertiary {
+  background-color: var(--c-soft-red);
+  color: var(--c-white);
 }

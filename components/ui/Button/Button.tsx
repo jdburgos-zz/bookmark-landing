@@ -5,7 +5,6 @@ import React from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
-  type?: string;
   className?: string;
   variant?: string;
   disabled?: boolean;
@@ -14,7 +13,6 @@ type ButtonProps = {
 };
 
 export const Button: React.FC<ButtonProps> = ({
-  type,
   className,
   variant,
   onClick,
@@ -22,10 +20,9 @@ export const Button: React.FC<ButtonProps> = ({
   children,
 }) => {
   const defaultClass = 'btn';
-  const typeClass = type === 'semi-rectangle' ? `${styles['semi-rectangle']}` : '';
   const customClasses = className || '';
   const variantClass = variant ? `${styles[variant]}` : '';
-  const classes = `${defaultClass} ${variantClass} ${typeClass} ${customClasses}`.trim();
+  const classes = `${defaultClass} ${variantClass} ${customClasses}`.trim();
 
   return (
     <button className={classes} type="button" onClick={onClick} disabled={disabled}>

@@ -61,4 +61,51 @@
       }
     }
   }
+
+  &__pre-footer {
+    background-color: var(--c-soft-blue);
+    color: var(--c-white);
+    padding: 50px 20px;
+    text-align: center;
+
+    &__title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 10px 0;
+    }
+
+    &__subtitle {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__input {
+      &-container {
+        background-color: var(--c-soft-red);
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        position: relative;
+
+        & > span {
+          position: absolute !important;
+          right: 23px;
+          top: 23px;
+        }
+      }
+    }
+
+    &__hint-text {
+      font-size: 1rem;
+      margin: 0;
+      padding: 5px 5px 5px 15px;
+      text-align: left;
+    }
+  }
 }
