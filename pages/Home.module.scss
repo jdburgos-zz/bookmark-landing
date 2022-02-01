@@ -47,5 +47,18 @@
     &-content {
       margin: 60px 0;
     }
+
+    &-collapse {
+      background-color: var(--white) !important;
+    }
+
+    &-item {
+      color: var(--c-very-dark-blue);
+      text-align: left;
+
+      .ant-collapse-content-box {
+        background-color: red;
+      }
+    }
   }
 }

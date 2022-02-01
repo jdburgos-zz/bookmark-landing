@@ -8,27 +8,27 @@ import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 
 /** Dependencies **/
-import { Tabs } from 'antd';
+import { Tabs, Collapse } from 'antd';
 
 /** Components **/
 import { Button, Input } from '@components/ui';
 import { TabItem } from '@components/TabItem';
 import { DownloadItem } from '@components/DownloadItem';
-import { FaqItem } from '@components/FaqItem';
-
-/** Styles **/
-import 'antd/es/tabs/style/index.css';
-import styles from './Home.module.scss';
 
 /** Data **/
 import { TABS_CONTENT } from '../data/tabs-content';
 import { DOWNLOAD_ITEMS } from '../data/download-items';
 import { FAQ_ITEMS } from '../data/faq-items';
 
+/** Styles **/
+import styles from './Home.module.scss';
+
 /** Assets **/
 import HeroImg from '../public/images/illustration-hero.svg';
 
+/** Antd **/
 const { TabPane } = Tabs;
+const { Panel } = Collapse;
 
 const Home: NextPage = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -40,7 +40,11 @@ const Home: NextPage = () => {
   const downloadItems = DOWNLOAD_ITEMS.map((item, index) => (
     <DownloadItem key={index} item={item} />
   ));
-  const faqItems = FAQ_ITEMS.map((item, index) => <FaqItem key={index} item={item} />);
+  const faqItems = FAQ_ITEMS.map((item, index) => (
+    <Panel key={index + 1} header={item.title} className={styles['home__faq-item']}>
+      {item.description}
+    </Panel>
+  ));
 
   return (
     <>
@@ -97,7 +101,16 @@ const Home: NextPage = () => {
             Here are some of our FAQs. If you have any other questions you’d like answered please
             feel free to email us.
           </p>
-          <div className={styles['home__faq-content']}>{faqItems}</div>
+          <div className={styles['home__faq-content']}>
+            <Collapse
+              bordered={false}
+              accordion
+              expandIconPosition="right"
+              className={styles['home__faq-collapse']}
+            >
+              {faqItems}
+            </Collapse>
+          </div>
           <Button>More Info</Button>
         </div>
       </div>

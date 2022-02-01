@@ -3,9 +3,11 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
 /** Components **/
-import { MainContainer } from '../components/layout/MainContainer';
+import { MainContainer } from '@components/layout/MainContainer';
 
 /** Styles **/
+import 'antd/es/tabs/style/index.css';
+import 'antd/es/collapse/style/index.css';
 import '../styles/styles.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
