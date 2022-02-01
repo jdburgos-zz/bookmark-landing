@@ -12,33 +12,38 @@ import TwitterIcon from '../../../public/images/icon-twitter.svg';
 
 export const Footer = () => {
   const MENU_ITEMS = [
-    { url: '/features', name: 'Features' },
-    { url: '/pricing', name: 'Pricing' },
-    { url: '/contact', name: 'Contact' },
+    { url: '/features', name: 'FEATURES' },
+    { url: '/pricing', name: 'PRICING' },
+    { url: '/contact', name: 'CONTACT' },
+  ];
+  const SOCIAL_ITEMS = [
+    { icon: FacebookIcon, name: 'Facebook', url: 'https://www.facebook.com' },
+    { icon: TwitterIcon, name: 'Twitter', url: 'https://www.twitter.com' },
   ];
 
   const menuItems = MENU_ITEMS.map(({ url, name }, index) => (
-    <li key={index}>
-      <Link href={url}>{name}</Link>
+    <li key={index} className={styles['footer__nav-item']}>
+      <Link href={url}>
+        <a className={styles['footer__nav-link']}>{name}</a>
+      </Link>
+    </li>
+  ));
+
+  const socialItems = SOCIAL_ITEMS.map(({ icon, name, url }, index) => (
+    <li key={index} className={styles['footer__social-item']}>
+      <a href={url} target="_blank" rel="noreferrer" className={styles['footer__social-link']}>
+        <Image src={icon} alt={name} layout="fixed" width={30} height={30} />
+      </a>
     </li>
   ));
 
   return (
     <footer className={styles.footer}>
-      <Image src={Logo} alt="Bookmark" priority />
-      <ul>{menuItems}</ul>
-      <ul>
-        <li>
-          <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
-            <Image src={FacebookIcon} alt="Facebook" />
-          </a>
-        </li>
-        <li>
-          <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
-            <Image src={TwitterIcon} alt="Twitter" />
-          </a>
-        </li>
-      </ul>
+      <div className={styles.footer__logo}>
+        <Image src={Logo} alt="Bookmark" priority layout="fixed" width={150} height={25} />
+      </div>
+      <ul className={styles.footer__nav}>{menuItems}</ul>
+      <ul className={styles.footer__social}>{socialItems}</ul>
     </footer>
   );
 };
