@@ -1,13 +1,22 @@
+/** React core **/
+import Link from 'next/link';
+
 /** Components **/
 import { MainMenu } from '@components/MainMenu';
-import { Logo } from '@components/Logo';
+
+/** Assets **/
+import { LogoBookmark } from '@images/LogoBookmark';
 
 /** Styles **/
 import styles from './Header.module.scss';
 
 export const Header = () => (
   <header className={styles.header}>
-    <Logo />
+    <Link href="/">
+      <a className={styles.logo}>
+        <LogoBookmark fill="#242A45" />
+      </a>
+    </Link>
     <MainMenu />
   </header>
 );

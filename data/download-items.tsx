@@ -2,14 +2,14 @@
 import { IDownloadItem } from '@interfaces/download-item.interface';
 
 /** Assets **/
-import ChromeLogo from '../public/images/logo-chrome.svg';
-import FirefoxLogo from '../public/images/logo-firefox.svg';
-import OperaLogo from '../public/images/logo-opera.svg';
+import { LogoChrome } from '@images/LogoChrome';
+import { LogoFirefox } from '@images/LogoFirefox';
+import { LogoOpera } from '@images/LogoOpera';
 
 export const DOWNLOAD_ITEMS: IDownloadItem[] = [
   {
     name: 'Chrome',
-    logo: ChromeLogo,
+    logo: <LogoChrome />,
     title: 'Add to Chrome',
     description: 'Minimum version 62',
     url: 'https://chrome.google.com/webstore/category/extensions?hl=en-GB',
@@ -17,7 +17,7 @@ export const DOWNLOAD_ITEMS: IDownloadItem[] = [
   },
   {
     name: 'Firefox',
-    logo: FirefoxLogo,
+    logo: <LogoFirefox />,
     title: 'Add to Firefox',
     description: 'Minimum version 55',
     url: 'https://addons.mozilla.org/en-GB/firefox/extensions/',
@@ -25,7 +25,7 @@ export const DOWNLOAD_ITEMS: IDownloadItem[] = [
   },
   {
     name: 'Opera',
-    logo: OperaLogo,
+    logo: <LogoOpera />,
     title: 'Add to Opera',
     description: 'Minimum version 46',
     url: 'https://addons.opera.com/en/extensions/',

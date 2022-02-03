@@ -2,7 +2,6 @@
 import React from 'react';
 
 /** Next core **/
-import Image from 'next/image';
 import Link from 'next/link';
 
 /** Components **/
@@ -15,7 +14,7 @@ import { IDownloadItem } from '@interfaces/download-item.interface';
 import styles from './DownloadItem.module.scss';
 
 /** Assets **/
-import Dots from '../../public/images/bg-dots.svg';
+import { BgDots } from '@images/BgDots';
 
 type DownloadItemProps = {
   item: IDownloadItem;
@@ -24,11 +23,11 @@ type DownloadItemProps = {
 export const DownloadItem: React.FC<DownloadItemProps> = ({ item }) => (
   <Card className={styles['download-item']}>
     <div className={styles['download-item__container']}>
-      <Image src={item.logo} alt={item.name} width={150} height={150} />
+      {item.logo}
       <div className={styles['download-item__content']}>
         <h3 className={styles['download-item__title']}>{item.title}</h3>
         <span className={styles['download-item__description']}>{item.description}</span>
-        <Image src={Dots} alt="dots" />
+        <BgDots />
       </div>
       <Link href={item.url}>
         <a target="_blank">

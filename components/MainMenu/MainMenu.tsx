@@ -3,19 +3,16 @@ import { useState } from 'react';
 
 /** Next core **/
 import Link from 'next/link';
-import Image from 'next/image';
-
-/** Components **/
-import { Logo } from '@components/Logo';
 
 /** Styles **/
 import styles from './MainMenu.module.scss';
 
 /** Assets **/
-import HamburgerIcon from '@public/images/icon-hamburger.svg';
-import CloseIcon from '@public/images/icon-close.svg';
-import TwitterIcon from '@public/images/icon-twitter.svg';
-import FacebookIcon from '@public/images/icon-facebook.svg';
+import { LogoBookmark } from '@images/LogoBookmark';
+import { HamburgerIcon } from '@images/HamburgerIcon';
+import { CloseIcon } from '@images/CloseIcon';
+import { TwitterIcon } from '@images/TwitterIcon';
+import { FacebookIcon } from '@images/FacebookIcon';
 
 export const MainMenu = () => {
   const [isMenuActive, toggleMenu] = useState(false);
@@ -92,7 +89,7 @@ export const MainMenu = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <Image src={FacebookIcon} alt="Facebook" />
+            <FacebookIcon />
           </a>
         </li>
         <li className={styles['main-menu__social-item']}>
@@ -102,24 +99,30 @@ export const MainMenu = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <Image src={TwitterIcon} alt="Twitter" />
+            <TwitterIcon />
           </a>
         </li>
       </ul>
     </div>
   );
 
-  const menuIcon = isMenuActive ? CloseIcon : HamburgerIcon;
+  const menuIcon = isMenuActive ? <CloseIcon /> : <HamburgerIcon />;
   const mainClass = styles['main-menu'];
   const classes = isMenuActive ? `${mainClass} ${styles['main-menu--open']}` : mainClass;
   const headerClass = isMenuActive ? styles['main-menu__header'] : '';
-
+  const logo = (
+    <Link href="/">
+      <a className={styles.logo}>
+        <LogoBookmark fill="#FFF" />
+      </a>
+    </Link>
+  );
   return (
     <div className={classes}>
       <div className={headerClass}>
-        {isMenuActive && <Logo />}
+        {isMenuActive && logo}
         <div className={styles['main-menu__btn']} onClick={handleMenu}>
-          <Image src={menuIcon} alt="Menu" priority />
+          {menuIcon}
         </div>
       </div>
       {isMenuActive && menu}

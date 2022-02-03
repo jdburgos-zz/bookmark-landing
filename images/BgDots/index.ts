@@ -1,0 +1,1 @@
+export { BgDots } from './BgDots';

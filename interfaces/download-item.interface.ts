@@ -1,6 +1,6 @@
 export interface IDownloadItem {
   name: string;
-  logo: string;
+  logo: any;
   title: string;
   description: string;
   url: string;

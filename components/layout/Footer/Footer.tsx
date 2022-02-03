@@ -1,5 +1,4 @@
 /** Next core **/
-import Image from 'next/image';
 import Link from 'next/link';
 
 /** Styles **/
@@ -7,8 +6,8 @@ import styles from './Footer.module.scss';
 
 /** Assets **/
 import { LogoBookmark } from '@images/LogoBookmark';
-import FacebookIcon from '@public/images/icon-facebook.svg';
-import TwitterIcon from '@public/images/icon-twitter.svg';
+import { TwitterIcon } from '@images/TwitterIcon';
+import { FacebookIcon } from '@images/FacebookIcon';
 
 export const Footer = () => {
   const MENU_ITEMS = [
@@ -17,8 +16,8 @@ export const Footer = () => {
     { url: '/contact', name: 'CONTACT' },
   ];
   const SOCIAL_ITEMS = [
-    { icon: FacebookIcon, name: 'Facebook', url: 'https://www.facebook.com' },
-    { icon: TwitterIcon, name: 'Twitter', url: 'https://www.twitter.com' },
+    { icon: <FacebookIcon />, name: 'Facebook', url: 'https://www.facebook.com' },
+    { icon: <TwitterIcon />, name: 'Twitter', url: 'https://www.twitter.com' },
   ];
 
   const menuItems = MENU_ITEMS.map(({ url, name }, index) => (
@@ -32,7 +31,7 @@ export const Footer = () => {
   const socialItems = SOCIAL_ITEMS.map(({ icon, name, url }, index) => (
     <li key={index} className={styles['footer__social-item']}>
       <a href={url} target="_blank" rel="noreferrer" className={styles['footer__social-link']}>
-        <Image src={icon} alt={name} layout="fixed" width={30} height={30} />
+        {icon}
       </a>
     </li>
   ));
@@ -40,7 +39,11 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__logo}>
-        <LogoBookmark fill="#FFF" />
+        <Link href="/">
+          <a className={styles.logo}>
+            <LogoBookmark fill="#FFF" />
+          </a>
+        </Link>
       </div>
       <ul className={styles.footer__nav}>{menuItems}</ul>
       <ul className={styles.footer__social}>{socialItems}</ul>

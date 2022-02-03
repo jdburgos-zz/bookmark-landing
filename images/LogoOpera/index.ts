@@ -1,0 +1,1 @@
+export { LogoOpera } from './LogoOpera';

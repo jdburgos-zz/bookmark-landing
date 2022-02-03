@@ -1,0 +1,1 @@
+export { LogoChrome } from './LogoChrome';
