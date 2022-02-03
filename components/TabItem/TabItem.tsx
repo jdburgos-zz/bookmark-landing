@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Button } from '@components/ui';
 
 /** Interfaces **/
-import { ITab } from '../../interfaces/tab.interface';
+import { ITab } from '@interfaces/tab.interface';
 
 /** Styles **/
 import styles from './TabItem.module.scss';

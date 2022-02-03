@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { Button, Card } from '@components/ui';
 
 /** Interfaces **/
-import { IDownloadItem } from '../../interfaces/download-item.interface';
+import { IDownloadItem } from '@interfaces/download-item.interface';
 
 /** Styles **/
 import styles from './DownloadItem.module.scss';

@@ -6,9 +6,9 @@ import Link from 'next/link';
 import styles from './Footer.module.scss';
 
 /** Assets **/
-import Logo from '../../../public/images/logo-bookmark.svg';
-import FacebookIcon from '../../../public/images/icon-facebook.svg';
-import TwitterIcon from '../../../public/images/icon-twitter.svg';
+import { LogoBookmark } from '@images/LogoBookmark';
+import FacebookIcon from '@public/images/icon-facebook.svg';
+import TwitterIcon from '@public/images/icon-twitter.svg';
 
 export const Footer = () => {
   const MENU_ITEMS = [
@@ -40,7 +40,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__logo}>
-        <Image src={Logo} alt="Bookmark" priority layout="fixed" width={150} height={25} />
+        <LogoBookmark fill="#FFF" />
       </div>
       <ul className={styles.footer__nav}>{menuItems}</ul>
       <ul className={styles.footer__social}>{socialItems}</ul>

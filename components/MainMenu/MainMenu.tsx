@@ -12,10 +12,10 @@ import { Logo } from '@components/Logo';
 import styles from './MainMenu.module.scss';
 
 /** Assets **/
-import HamburgerIcon from '../../public/images/icon-hamburger.svg';
-import CloseIcon from '../../public/images/icon-close.svg';
-import TwitterIcon from '../../public/images/icon-twitter.svg';
-import FacebookIcon from '../../public/images/icon-facebook.svg';
+import HamburgerIcon from '@public/images/icon-hamburger.svg';
+import CloseIcon from '@public/images/icon-close.svg';
+import TwitterIcon from '@public/images/icon-twitter.svg';
+import FacebookIcon from '@public/images/icon-facebook.svg';
 
 export const MainMenu = () => {
   const [isMenuActive, toggleMenu] = useState(false);

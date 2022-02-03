@@ -1,5 +1,5 @@
 /** Components **/
-import { MainMenu } from '../../MainMenu';
+import { MainMenu } from '@components/MainMenu';
 import { Logo } from '@components/Logo';
 
 /** Styles **/

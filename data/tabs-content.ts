@@ -1,5 +1,5 @@
 /** Interfaces **/
-import { ITab } from '../interfaces/tab.interface';
+import { ITab } from '@interfaces/tab.interface';
 
 /** Assets **/
 import ImgTab1 from '../public/images/illustration-features-tab-1.svg';

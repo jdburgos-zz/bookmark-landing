@@ -8,7 +8,7 @@ import Image from 'next/image';
 import styles from './Input.module.scss';
 
 /** Assets **/
-import ErrorIcon from '../../../public/images/icon-error.svg';
+import ErrorIcon from '@public/images/icon-error.svg';
 
 type InputProps = {
   className?: string;

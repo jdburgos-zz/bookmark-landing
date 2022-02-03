@@ -9,7 +9,7 @@ import Link from 'next/link';
 import styles from './Logo.module.scss';
 
 /** Assets **/
-import LogoImg from '../../public/images/logo-bookmark.svg';
+import LogoImg from '@public/images/logo-bookmark.svg';
 
 type LogoProps = {
   href?: string;

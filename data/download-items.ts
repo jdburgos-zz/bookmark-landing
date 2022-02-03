@@ -1,5 +1,5 @@
 /** Interfaces **/
-import { IDownloadItem } from '../interfaces/download-item.interface';
+import { IDownloadItem } from '@interfaces/download-item.interface';
 
 /** Assets **/
 import ChromeLogo from '../public/images/logo-chrome.svg';

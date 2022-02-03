@@ -1,5 +1,5 @@
 /** Interfaces **/
-import { IFaqItem } from '../interfaces/faq-item.interface';
+import { IFaqItem } from '@interfaces/faq-item.interface';
 
 export const FAQ_ITEMS: IFaqItem[] = [
   {

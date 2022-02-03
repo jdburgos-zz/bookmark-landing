@@ -16,18 +16,18 @@ import { TabItem } from '@components/TabItem';
 import { DownloadItem } from '@components/DownloadItem';
 
 /** Data **/
-import { TABS_CONTENT } from '../data/tabs-content';
-import { DOWNLOAD_ITEMS } from '../data/download-items';
-import { FAQ_ITEMS } from '../data/faq-items';
+import { TABS_CONTENT } from '@data/tabs-content';
+import { DOWNLOAD_ITEMS } from '@data/download-items';
+import { FAQ_ITEMS } from '@data/faq-items';
 
 /** Utils **/
-import { validateEmail } from '../utils/validate-email';
+import { validateEmail } from '@utils/validate-email';
 
 /** Styles **/
 import styles from './Home.module.scss';
 
 /** Assets **/
-import HeroImg from '../public/images/illustration-hero.svg';
+import HeroImg from '@public/images/illustration-hero.svg';
 
 /** Antd **/
 const { TabPane } = Tabs;

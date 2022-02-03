@@ -1,0 +1,1 @@
+export { LogoBookmark } from './LogoBookmark';
