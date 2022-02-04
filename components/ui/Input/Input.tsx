@@ -22,7 +22,11 @@ export const Input: React.FC<InputProps> = ({ className, error, onChange, input 
   const customClasses = className || '';
   const errorClass = error ? styles['input--error'] : '';
   const classes = `${styles.input} ${customClasses} ${errorClass}`.trim();
-  const errorIcon = <ErrorIcon className={styles.input__icon} />;
+  const errorIcon = (
+    <div className={styles.input__icon}>
+      <ErrorIcon />
+    </div>
+  );
 
   return (
     <>

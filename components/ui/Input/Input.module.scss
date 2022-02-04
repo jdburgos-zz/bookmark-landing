@@ -10,6 +10,13 @@
     border: 3px solid var(--c-soft-red);
   }
 
+  &__icon {
+    line-height: 0;
+    position: absolute;
+    right: 23px;
+    top: 23px;
+  }
+
   &::placeholder {
     color: var(--c-gray);
   }
