@@ -86,12 +86,19 @@
 
     &__input {
       &-container {
-        background-color: var(--c-soft-red);
         border-radius: 7px;
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
         position: relative;
+
+        &--error {
+          background-color: var(--c-soft-red);
+        }
+
+        &--success {
+          background-color: var(--c-soft-green);
+        }
       }
     }
 

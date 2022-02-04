@@ -9,6 +9,8 @@ import { GetStaticProps } from 'next';
 
 /** Dependencies **/
 import { Tabs, Collapse } from 'antd';
+import { ref, set } from 'firebase/database';
+import { v1 as uuidV1 } from 'uuid';
 
 /** Components **/
 import { Button, Input } from '@components/ui';
@@ -20,8 +22,15 @@ import { TABS_CONTENT } from '@data/tabs-content';
 import { DOWNLOAD_ITEMS } from '@data/download-items';
 import { FAQ_ITEMS } from '@data/faq-items';
 
+/** Firebase **/
+import { database } from '../config/firebase';
+
 /** Utils **/
 import { validateEmail } from '@utils/validate-email';
+
+/** Enums **/
+import { INPUT_HINT_TXT } from '@enums/input-hint-txt.enum';
+import { INPUT_STATUS } from '@enums/input-status.enum';
 
 /** Styles **/
 import styles from './Home.module.scss';
@@ -35,7 +44,8 @@ const { Panel } = Collapse;
 
 const Home: NextPage = () => {
   const [disableBtn, setDisableBtn] = useState(true);
-  const [inputError, setInputError] = useState(false);
+  const [inputState, setInputState] = useState('');
+  const [inputText, setInputText] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const tabItems = TABS_CONTENT.map((tab, index) => (
     <TabPane tab={tab.title} key={index + 1}>
@@ -53,22 +63,41 @@ const Home: NextPage = () => {
 
   const emailHandler = () => {
     const email = inputRef.current!.value;
+    const emailValidation = validateEmail(email);
+    const emailState = emailValidation ? '' : INPUT_STATUS.error;
+    const emailTxt = emailValidation ? '' : INPUT_HINT_TXT.error;
 
     if (email === '') {
-      setInputError(validateEmail(email));
+      setInputState('');
+      setInputText('');
     } else {
-      setInputError(!validateEmail(email));
+      setInputState(emailState);
+      setInputText(emailTxt);
       setDisableBtn(!validateEmail(email));
     }
   };
 
-  const contactHandler = () => {
-    console.log('contact');
+  const contactHandler = async () => {
+    const id = uuidV1();
+    const email = inputRef.current!.value;
+    await set(ref(database, `emails/${id}`), { email });
+
+    inputRef.current!.value = '';
+    setDisableBtn(true);
+    setInputState(INPUT_STATUS.success);
+    setInputText(INPUT_HINT_TXT.success);
+
+    setTimeout(() => {
+      setInputState('');
+      setInputText('');
+    }, 5000);
   };
 
-  const errorText = (
-    <p className={styles['home__pre-footer__hint-text']}>Whoops, make sure it&apos;s an email</p>
-  );
+  const hintText = <p className={styles['home__pre-footer__hint-text']}>{inputText}</p>;
+
+  const hintTextClass = inputText ? styles[`home__pre-footer__input-container--${inputState}`] : '';
+  const inputContainerClasses =
+    `${styles['home__pre-footer__input-container']} ${hintTextClass}`.trim();
 
   return (
     <>
@@ -148,7 +177,7 @@ const Home: NextPage = () => {
           Stay up-to-date with what we’re doing
         </h4>
         <div className={styles['home__pre-footer__form']}>
-          <div className={styles['home__pre-footer__input-container']}>
+          <div className={inputContainerClasses}>
             <Input
               className={styles['home__pre-footer__input']}
               input={{
@@ -156,10 +185,10 @@ const Home: NextPage = () => {
                 placeholder: 'Email',
                 type: 'email',
               }}
-              error={inputError}
+              state={inputState}
               onChange={emailHandler}
             />
-            {inputError && errorText}
+            {inputText && hintText}
           </div>
           <Button variant="tertiary" onClick={contactHandler} disabled={disableBtn}>
             Contact Us

@@ -4,6 +4,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@data/*": ["data/*"],
+      "@enums/*": ["enums/*"],
       "@images/*": ["images/*"],
       "@interfaces/*": ["interfaces/*"],
       "@pages/*": ["pages/*"],

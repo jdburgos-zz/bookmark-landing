@@ -14,24 +14,20 @@ type InputProps = {
     placeholder: string;
     type: string;
   };
-  error: boolean;
+  state: string;
   onChange: () => void;
 };
 
-export const Input: React.FC<InputProps> = ({ className, error, onChange, input }) => {
+export const Input: React.FC<InputProps> = ({ className, state, onChange, input }) => {
   const customClasses = className || '';
-  const errorClass = error ? styles['input--error'] : '';
-  const classes = `${styles.input} ${customClasses} ${errorClass}`.trim();
-  const errorIcon = (
-    <div className={styles.input__icon}>
-      <ErrorIcon />
-    </div>
-  );
+  const stateClass = state ? styles[`input--${state}`] : '';
+  const classes = `${styles.input} ${customClasses} ${stateClass}`.trim();
+  const icon = <div className={styles.input__icon}>{state === 'error' && <ErrorIcon />}</div>;
 
   return (
     <>
       <input onChange={onChange} className={classes} {...input} />
-      {error && errorIcon}
+      {icon}
     </>
   );
 };
