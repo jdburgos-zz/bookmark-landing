@@ -3,6 +3,7 @@ import React from 'react';
 
 /** Next core **/
 import Image from 'next/image';
+import Link from 'next/link';
 
 /** Components **/
 import { Button } from '@components/ui';
@@ -25,7 +26,11 @@ export const TabItem: React.FC<TabItemProps> = ({ tab }) => {
       <Image src={tab.img} alt={tab.title} priority />
       <h3 className={styles['tab-item__title']}>{tab.subtitle}</h3>
       <p className={styles['tab-item__description']}>{tab.description}</p>
-      <Button>More Info</Button>
+      <Link href="/features">
+        <a>
+          <Button>More Info</Button>
+        </a>
+      </Link>
     </div>
   );
 };

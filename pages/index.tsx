@@ -135,7 +135,11 @@ const Home: NextPage = () => {
               {faqItems}
             </Collapse>
           </div>
-          <Button>More Info</Button>
+          <Link href="/contact">
+            <a>
+              <Button>More Info</Button>
+            </a>
+          </Link>
         </div>
       </div>
       <div className={styles['home__pre-footer']}>
