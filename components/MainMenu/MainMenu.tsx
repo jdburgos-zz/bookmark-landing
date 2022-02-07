@@ -3,6 +3,13 @@ import { useState } from 'react';
 
 /** Next core **/
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+/** Hooks **/
+import { useAppDispatch, useAppSelector } from '@hooks/react-redux';
+
+/** Reducers **/
+import { logoutFn } from '@store/auth/auth.reducer';
 
 /** Styles **/
 import styles from './MainMenu.module.scss';
@@ -16,30 +23,35 @@ import { FacebookIcon } from '@images/FacebookIcon';
 
 export const MainMenu = () => {
   const [isMenuActive, toggleMenu] = useState(false);
-  const [isLogged] = useState(false);
+  const user = useAppSelector(state => state.auth.user);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const handleMenu = () => {
     toggleMenu(prevState => !prevState);
   };
 
-  const HandleLogout = () => {
+  const HandleLogout = async () => {
     handleMenu();
+    dispatch(logoutFn(null));
+    localStorage.removeItem('user');
+    await router.push('/');
   };
 
+  const btnLinkClasses = `${styles['main-menu__link']} ${styles['main-menu__link-btn']}`;
+
   const logout = (
-    <div className={styles['main-menu__item']} onClick={HandleLogout}>
-      logout
-    </div>
+    <li className={styles['main-menu__item']} onClick={HandleLogout}>
+      <div className={btnLinkClasses}>LOGOUT</div>
+    </li>
   );
 
-  const loginClasses = `${styles['main-menu__link']} ${styles['main-menu__link-login']}`;
-
-  const content = isLogged ? (
+  const content = user?.isLoggedIn ? (
     logout
   ) : (
     <li className={styles['main-menu__item']}>
       <Link href="/auth/login">
-        <a className={loginClasses} onClick={handleMenu}>
+        <a className={btnLinkClasses} onClick={handleMenu}>
           LOGIN
         </a>
       </Link>
@@ -49,7 +61,7 @@ export const MainMenu = () => {
     <li className={styles['main-menu__item']}>
       <Link href="/admin">
         <a className={styles['main-menu__link']} onClick={handleMenu}>
-          Dashboard
+          DASHBOARD
         </a>
       </Link>
     </li>
@@ -78,7 +90,7 @@ export const MainMenu = () => {
     <div className={styles['main-menu__container']}>
       <ul className={styles['main-menu__submenu']}>
         {menuItems}
-        {isLogged && admin}
+        {user?.isLoggedIn && admin}
         {content}
       </ul>
       <ul className={socialMenuClasses}>
@@ -112,7 +124,7 @@ export const MainMenu = () => {
   const headerClass = isMenuActive ? styles['main-menu__header'] : '';
   const logo = (
     <Link href="/">
-      <a className={styles.logo}>
+      <a className={styles.logo} onClick={handleMenu}>
         <LogoBookmark fill="#FFF" />
       </a>
     </Link>

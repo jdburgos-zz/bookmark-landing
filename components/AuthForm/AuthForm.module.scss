@@ -1,0 +1,29 @@
+.auth-form {
+  background-color: var(--c-very-dark-blue);
+  border-radius: 10px;
+  color: var(--c-white);
+  margin: 0 auto 60px;
+  max-width: 90%;
+  padding: 20px;
+  width: calc(100% - 80px);
+
+  &__container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__input {
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    min-width: 110px;
+  }
+}

@@ -33,6 +33,7 @@
 
   &__link {
     color: var(--c-white);
+    cursor: pointer;
     display: block;
     font-size: 1.3rem;
     padding: 20px 0;
@@ -44,7 +45,7 @@
       color: var(--c-grayish-blue);
     }
 
-    &-login {
+    &-btn {
       border: 2px solid;
       border-radius: 5px;
       font-weight: 500;
