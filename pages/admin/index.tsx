@@ -1,6 +1,9 @@
 /** Next core **/
 import { GetStaticProps, NextPage } from 'next';
 
+/** Hoc **/
+import Auth from '@hoc/Auth/Auth';
+
 const title = 'Admin';
 
 const Admin: NextPage = () => {
@@ -11,7 +14,7 @@ const Admin: NextPage = () => {
   );
 };
 
-export default Admin;
+export default Auth(Admin);
 
 export const getStaticProps: GetStaticProps = async context => {
   return {
