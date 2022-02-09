@@ -8,7 +8,8 @@
     "lint": "next lint",
     "format": "prettier . --write",
     "stylelint": "stylelint \"**/*.scss\" --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
+    "@cypress/code-coverage": "^3.9.12",
     "@next/eslint-plugin-next": "^12.0.8",
     "@types/node": "17.0.12",
     "@types/react": "17.0.38",
@@ -32,10 +34,12 @@
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "create-react-component-folder": "^0.3.7",
+    "cypress": "^9.4.1",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.8",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
