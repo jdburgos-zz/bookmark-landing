@@ -6,6 +6,7 @@ module.exports = {
     jest: true,
   },
   extends: [
+    'eslint:recommended',
     'next/core-web-vitals',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
