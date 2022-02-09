@@ -1,6 +1,3 @@
-/** React core **/
-import React from 'react';
-
 /** Next core **/
 import { useRouter } from 'next/router';
 import { NextPage } from 'next';

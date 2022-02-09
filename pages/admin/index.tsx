@@ -1,5 +1,5 @@
 /** Next core **/
-import { GetServerSideProps, NextPage } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 
 /** Firebase **/
 import { collection, query, getDocs, orderBy } from 'firebase/firestore';
@@ -19,9 +19,7 @@ import { Book } from '@components/Book';
 /** Styles **/
 import styles from './Admin.module.scss';
 
-// @ts-ignore
-// eslint-disable-next-line react/prop-types
-const Admin: NextPage = ({ data }) => {
+const Admin: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const books = Object.keys(data).map((i, index) => <Book key={index} book={data[i]} />);
 
   return (
