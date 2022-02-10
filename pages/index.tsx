@@ -23,7 +23,7 @@ import { DOWNLOAD_ITEMS } from '@data/download-items';
 import { FAQ_ITEMS } from '@data/faq-items';
 
 /** Firebase **/
-import { database } from '../config/firebase';
+import { database } from '@config/firebase';
 
 /** Utils **/
 import { validateEmail } from '@utils/validate-email';
