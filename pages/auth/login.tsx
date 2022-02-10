@@ -26,8 +26,6 @@ import { setUser } from '@store/auth/auth.reducer';
 /** Utils **/
 import { isFirebaseError } from '@utils/is-firebase-error.type-guard';
 
-const title = 'Login';
-
 const Login: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
@@ -85,6 +83,8 @@ const Login: NextPage = () => {
 export default Login;
 
 export const getStaticProps: GetStaticProps = async context => {
+  const title = 'Login';
+
   return {
     props: { title },
   };

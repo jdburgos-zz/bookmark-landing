@@ -1,8 +1,6 @@
 /** Next core **/
 import { GetStaticProps, NextPage } from 'next';
 
-const title = 'Features';
-
 const Features: NextPage = () => {
   return (
     <div>
@@ -14,6 +12,8 @@ const Features: NextPage = () => {
 export default Features;
 
 export const getStaticProps: GetStaticProps = async context => {
+  const title = 'Features';
+
   return {
     props: { title },
   };

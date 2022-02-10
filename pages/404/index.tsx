@@ -1,8 +1,6 @@
 /** Next core **/
 import { GetStaticProps, NextPage } from 'next';
 
-const title = 'Not Found';
-
 const NotFound: NextPage = () => {
   return (
     <div>
@@ -14,6 +12,8 @@ const NotFound: NextPage = () => {
 export default NotFound;
 
 export const getStaticProps: GetStaticProps = async context => {
+  const title = 'Not Found';
+
   return {
     props: { title },
   };
