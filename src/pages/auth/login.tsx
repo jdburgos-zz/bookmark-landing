@@ -23,6 +23,9 @@ import { useAppDispatch } from '@hooks/react-redux';
 /** Reducers **/
 import { setUser } from '@store/auth/auth.reducer';
 
+/** Hoc **/
+import Auth from '@hoc/Auth/Auth';
+
 /** Utils **/
 import { isFirebaseError } from '@utils/is-firebase-error.type-guard';
 
@@ -80,7 +83,7 @@ const Login: NextPage = () => {
   );
 };
 
-export default Login;
+export default Auth(Login);
 
 export const getStaticProps: GetStaticProps = async context => {
   const title = 'Login';
