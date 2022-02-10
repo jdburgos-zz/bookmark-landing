@@ -2,9 +2,9 @@
 import { ITab } from '@interfaces/tab.interface';
 
 /** Assets **/
-import ImgTab1 from '../public/images/illustration-features-tab-1.svg';
-import ImgTab2 from '../public/images/illustration-features-tab-2.svg';
-import ImgTab3 from '../public/images/illustration-features-tab-3.svg';
+import ImgTab1 from '@public/images/illustration-features-tab-1.svg';
+import ImgTab2 from '@public/images/illustration-features-tab-2.svg';
+import ImgTab3 from '@public/images/illustration-features-tab-3.svg';
 
 export const TABS_CONTENT: ITab[] = [
   {
