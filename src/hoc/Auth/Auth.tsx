@@ -9,9 +9,10 @@ const Auth = (WrappedComponent: NextPage) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const router = useRouter();
       const user = localStorage.getItem('user');
+      const protectedRoutes = ['/admin', '/books/[id]'];
 
       if (!user) {
-        if (router.pathname === '/admin') {
+        if (protectedRoutes.includes(router.pathname)) {
           router.push('/auth/login');
 
           return null;

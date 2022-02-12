@@ -2,10 +2,17 @@
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import React from 'react';
+/** Dependencies **/
 import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/firestore';
+
+/** Config **/
 import { firestore } from '@config/firebase';
+
+/** Interfaces **/
 import { IBook } from '@interfaces/books.interfaces';
+
+/** Hoc **/
+import Auth from '@hoc/Auth/Auth';
 
 const Book = ({ book }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
@@ -23,7 +30,7 @@ const Book = ({ book }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export default Book;
+export default Auth(Book);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const q = query(collection(firestore, 'books'), orderBy('title'));
