@@ -6,6 +6,7 @@ import { IBook } from '@interfaces/books.interfaces';
 
 /** Styles **/
 import styles from './Book.module.scss';
+import Link from 'next/link';
 
 type BookProps = {
   book: IBook;
@@ -13,9 +14,13 @@ type BookProps = {
 
 export const Book: React.FC<BookProps> = ({ book }) => {
   return (
-    <div className={styles.book}>
-      <h3 className={styles.book__title}>{book.title}</h3>
-      <p className={styles.book__author}>{book.author}</p>
-    </div>
+    <Link href={`/books/${book.id}`}>
+      <a className={styles.book}>
+        <div>
+          <h3 className={styles.book__title}>{book.title}</h3>
+          <p className={styles.book__author}>{book.author}</p>
+        </div>
+      </a>
+    </Link>
   );
 };

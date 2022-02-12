@@ -1,7 +1,16 @@
 .book {
-  border: 1px solid;
+  border: 1px solid var(--c-very-dark-blue);
   border-radius: 10px;
+  color: var(--c-very-dark-blue);
+  display: block;
   padding: 20px;
+  text-decoration: none;
+  transition: color 0.8s, border-color 0.8s;
+
+  &:hover {
+    border-color: hsl(229deg 12% 27%);
+    color: hsl(229deg 12% 27%);
+  }
 
   &:not(&:last-child) {
     margin-bottom: 20px;
